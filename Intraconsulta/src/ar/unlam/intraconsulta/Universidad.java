@@ -6,17 +6,27 @@ import java.util.Iterator;
 public class Universidad {
 
 	// private Alumno [] alumnos;
-	private ArrayList<Alumno> alumnos;
-	private String nombre;
-	private ArrayList<Materia> materias;
-	private ArrayList <InscripcionMateria> inscripcionesMateria;
 
-	public Universidad(String nombre) {
-		this.nombre = nombre;
-		this.alumnos = new ArrayList<Alumno>();
-		this.materias = new ArrayList<>();
-		this.inscripcionesMateria = new ArrayList<>();
-	}
+	private String nombre; //de la universidad
+	private ArrayList<Alumno> alumnos;
+	private ArrayList<Materia> materias; //aca guarda el plan de estudio
+	private ArrayList<Profesor> profesores;
+	private ArrayList<CicloLectivo> cicloLectivo;
+	private ArrayList<Comision> comisiones;
+
+	//METODO guardar las inscripciones -> alumno en comision
+	
+	
+	
+	
+	
+	
+	
+//	public Universidad(String nombre) {
+//		this.nombre = nombre;
+//		this.alumnos = new ArrayList<Alumno>();
+//		this.materias = new ArrayList<>();
+//	}
 
 	public Boolean registrar(Alumno alumno) {
 
