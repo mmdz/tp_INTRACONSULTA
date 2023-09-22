@@ -16,17 +16,15 @@ public class Universidad {
 
 	//METODO guardar las inscripciones -> alumno en comision
 	
-	
-	
-	
-	
-	
-	
-//	public Universidad(String nombre) {
-//		this.nombre = nombre;
-//		this.alumnos = new ArrayList<Alumno>();
-//		this.materias = new ArrayList<>();
-//	}
+	public Universidad(String nombre) {
+		this.nombre = nombre;
+		this.alumnos = new ArrayList<>();
+		this.materias = new ArrayList<>();
+		this.profesores = new ArrayList<>();
+		this.cicloLectivo = new ArrayList<>();
+		this.comisiones = new ArrayList<>();
+		
+	}
 
 	public Boolean registrar(Alumno alumno) {
 
@@ -56,10 +54,29 @@ public class Universidad {
 	}
 
 	public Boolean registraMateria(Materia materia) {
+		
+		Boolean response = true;
+		
+		for(Materia elemento: this.materias ) {
+			
+			if(elemento.getId() == materia.getId()) {
+				
+				response = false;
+				break;
+				
+			}
+			
+		}
+		
+		if(response) {
+			this.materias.add(materia);
+		}
 	   
-		return this.materias.add(materia);
+		return response;
 	}
 
+	
+	/*
 	public boolean inscribirAlumnoAUnaMateria(Integer dni, Integer codigo) {
 	
 		Alumno alumno = this.buscarAlumnoPorDni(dni);
@@ -73,15 +90,16 @@ public class Universidad {
 		}
 		
 		return false;
-	}
+	}*/
 
+	/*
 	private Materia buscarMateriaPorCodigo(Integer codigo) {
 		for (int i = 0; i < this.materias.size(); i++) {
 			if (this.materias.get(i).getCodigo().equals(codigo))
 				return this.materias.get(i);
 		}
 		return null;
-	}
+	}*/
 	
 	
 
