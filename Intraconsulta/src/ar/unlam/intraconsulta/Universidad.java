@@ -75,6 +75,63 @@ public class Universidad {
 		return response;
 	}
 
+	public boolean agregarCorrelatividad(Integer id, Integer id2) {
+		// TODO Auto-generated method stub6
+		
+		Boolean returnValue = false;
+		
+		Materia materia = this.buscarMateriaById(id);
+		Materia correlativa = this.buscarMateriaById(id2);
+		
+		if(materia != null && correlativa != null) {
+			
+			materia.agregarCorrelativa(correlativa.getId());
+			returnValue = true;
+		}
+		
+		return returnValue;
+	}
+
+	
+	private Materia buscarMateriaById(Integer id) {
+		
+		Materia value = null;
+		
+		for(Materia materia: this.materias) {
+			if(materia.getId() == id) {
+				value = materia;
+				break;
+			}
+		}
+		
+		return value;
+		
+	}
+
+	public boolean eliminarCorrelatividad(Integer id, Integer id2) {
+		
+		Boolean returnValue = false;
+		
+		Materia materia = this.buscarMateriaById(id);
+		Materia correlativa = this.buscarMateriaById(id2);
+		
+		if(materia != null && correlativa != null) {
+			
+			
+			if(materia.getCorrelativa().contains(correlativa.getId())) {
+				
+				materia.getCorrelativa().remove(correlativa.getId());
+				returnValue = true;
+				
+			}
+			
+			//materia.agregarCorrelativa(correlativa.getId());
+		}
+		
+		return returnValue;
+		
+	}
+	
 	
 	/*
 	public boolean inscribirAlumnoAUnaMateria(Integer dni, Integer codigo) {
