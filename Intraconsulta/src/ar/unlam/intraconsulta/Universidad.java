@@ -16,17 +16,15 @@ public class Universidad {
 
 	//METODO guardar las inscripciones -> alumno en comision
 	
-	
-	
-	
-	
-	
-	
-//	public Universidad(String nombre) {
-//		this.nombre = nombre;
-//		this.alumnos = new ArrayList<Alumno>();
-//		this.materias = new ArrayList<>();
-//	}
+	public Universidad(String nombre) {
+		this.nombre = nombre;
+		this.alumnos = new ArrayList<>();
+		this.materias = new ArrayList<>();
+		this.profesores = new ArrayList<>();
+		this.cicloLectivo = new ArrayList<>();
+		this.comisiones = new ArrayList<>();
+		
+	}
 
 	public Boolean registrar(Alumno alumno) {
 
@@ -56,10 +54,86 @@ public class Universidad {
 	}
 
 	public Boolean registraMateria(Materia materia) {
+		
+		Boolean response = true;
+		
+		for(Materia elemento: this.materias ) {
+			
+			if(elemento.getId() == materia.getId()) {
+				
+				response = false;
+				break;
+				
+			}
+			
+		}
+		
+		if(response) {
+			this.materias.add(materia);
+		}
 	   
-		return this.materias.add(materia);
+		return response;
 	}
 
+	public boolean agregarCorrelatividad(Integer id, Integer id2) {
+		// TODO Auto-generated method stub6
+		
+		Boolean returnValue = false;
+		
+		Materia materia = this.buscarMateriaById(id);
+		Materia correlativa = this.buscarMateriaById(id2);
+		
+		if(materia != null && correlativa != null) {
+			
+			materia.agregarCorrelativa(correlativa.getId());
+			returnValue = true;
+		}
+		
+		return returnValue;
+	}
+
+	
+	private Materia buscarMateriaById(Integer id) {
+		
+		Materia value = null;
+		
+		for(Materia materia: this.materias) {
+			if(materia.getId() == id) {
+				value = materia;
+				break;
+			}
+		}
+		
+		return value;
+		
+	}
+
+	public boolean eliminarCorrelatividad(Integer id, Integer id2) {
+		
+		Boolean returnValue = false;
+		
+		Materia materia = this.buscarMateriaById(id);
+		Materia correlativa = this.buscarMateriaById(id2);
+		
+		if(materia != null && correlativa != null) {
+			
+			
+			if(materia.getCorrelativa().contains(correlativa.getId())) {
+				
+				materia.getCorrelativa().remove(correlativa.getId());
+				returnValue = true;
+				
+			}
+			
+			//materia.agregarCorrelativa(correlativa.getId());
+		}
+		
+		return returnValue;
+		
+	}
+	
+	
+	/*
 	public boolean inscribirAlumnoAUnaMateria(Integer dni, Integer codigo) {
 	
 		Alumno alumno = this.buscarAlumnoPorDni(dni);
@@ -73,15 +147,16 @@ public class Universidad {
 		}
 		
 		return false;
-	}
+	}*/
 
+	/*
 	private Materia buscarMateriaPorCodigo(Integer codigo) {
 		for (int i = 0; i < this.materias.size(); i++) {
 			if (this.materias.get(i).getCodigo().equals(codigo))
 				return this.materias.get(i);
 		}
 		return null;
-	}
+	}*/
 	
 	
 
