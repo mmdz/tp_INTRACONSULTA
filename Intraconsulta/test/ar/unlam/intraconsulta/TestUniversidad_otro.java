@@ -8,13 +8,14 @@ public class TestUniversidad_otro {
 
 	@Test
 	public void queSePuedaRegistrarUnAlumnoAUnaUniversidad() {
-		 String  nombre = "Unlam";
+		//preparacion
+		String  nombre = "Unlam";
     	Universidad unlam = new Universidad (nombre);
     	nombre = "Marta";
     	String apellido = "perez";
     	Integer dni= 44555; 
     	Alumno alumno = new Alumno (dni,apellido, nombre);
-		Boolean registroExitoso = unlam.registrar(alumno);
+		Boolean registroExitoso = unlam.registrarAlumno(alumno);
     	assertTrue(registroExitoso);
     	
     	
@@ -30,11 +31,11 @@ public class TestUniversidad_otro {
     	Integer dni= 44555; 
     	Alumno alumno = new Alumno (dni,apellido, nombre);
     	Alumno alumno2 = new Alumno (dni,"jose", "Lopez");
-    	unlam.registrar(alumno);
-		Boolean registroExitoso = unlam.registrar(alumno2);
+    	unlam.registrarAlumno(alumno);
+		Boolean registroExitoso = unlam.registrarAlumno(alumno2);
     	assertFalse(registroExitoso);
     	
-    	
+    
 	}
 	
 	@Test
@@ -47,7 +48,7 @@ public class TestUniversidad_otro {
         assertTrue (unlam.registraMateria(pb2));
     	       
 	}
-	
+
 	
 	
 	@Test
@@ -62,7 +63,7 @@ public class TestUniversidad_otro {
     	String apellido = "perez";
     	Integer dni= 44555; 
         Alumno alumno = new Alumno (dni,apellido, nombre);
-    	unlam.registrar(alumno);
+    	unlam.registrarAlumno(alumno);
     	assertTrue (unlam.inscribirAlumnoAUnaMateria(dni,codigo)) ;
     	       
 	}

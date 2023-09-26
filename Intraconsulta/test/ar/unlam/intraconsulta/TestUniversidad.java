@@ -2,13 +2,21 @@ package ar.unlam.intraconsulta;
 
 import static org.junit.Assert.*;
 
+import java.time.LocalDate;
+
 import org.junit.Test;
 
 public class TestUniversidad {
 
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
+//	@Test
+//	public void queSePuedaAgregarUnaUniversidad() {
+//		//preparacion
+//		String nombre = "unlam";
+//		Universidad unlam = new Universidad("unlam");
+//		
+//		String esperado = "unlam";
+//		assertEquals(esperado, nombre);
+//	}
+
 
 }

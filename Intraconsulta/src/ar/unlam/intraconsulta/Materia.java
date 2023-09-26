@@ -9,9 +9,8 @@ public class Materia {
 	
 	public Materia(String nombre, Integer id) {
 		this.nombre = nombre;
-		this.id = id;
-		
-	}
+		this.id = id;		
+	}   
 	
 	//metodo agregarCorrelativa
 
@@ -19,6 +18,9 @@ public class Materia {
 		this.correlativa.add(id);
 	}
 	
+	
+	
+	//setter y getter
 	public Integer getId() {
 		return id;
 	}

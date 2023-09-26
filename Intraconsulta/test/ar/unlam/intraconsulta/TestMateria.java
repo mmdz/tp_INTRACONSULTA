@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+
 public class TestMateria {
 
 	@Test
@@ -41,6 +42,7 @@ public class TestMateria {
 		
 		
 	}
+	
 	
 	@Test
 	public void queNoPuedaAgregarCorrelativa() {
