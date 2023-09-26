@@ -11,6 +11,7 @@ public class Comision {
 	private ArrayList<Alumno> alumnoComision = new ArrayList<>();
 	private ArrayList<Profesor> profesorComision = new ArrayList<>();
 	private Turno turno;
+	private Integer dia; /*dias de la semana 1 al 7*/
 	private Materia materia;
 	private CicloLectivo ciclo; //fecha de inicio
 	private Aula nroAula;
@@ -18,9 +19,9 @@ public class Comision {
 	private ArrayList<Nota> notas = new ArrayList<>();
 	
 	
+	 
 	
-	
-
+//getter y setter
 	public ArrayList<Alumno> getAlumnoComision() {
 		return alumnoComision;
 	}
@@ -77,12 +78,11 @@ public class Comision {
 		this.nroAula = nroAula;
 	}
 	
-
-
+	public void setDia(Integer dia) {
+		this.dia = dia;
+	}
 	
-	
-	
-	
-	
-	
+	public Integer getDia() {
+		return dia;
+	}
 }

@@ -6,16 +6,25 @@ import java.time.LocalDate;
 
 public class CicloLectivo {
 
+	public Integer id;
 	public LocalDate fechaDeInicioDeCuatrimestre; //formatear fechas AAAA MM DD
 	public LocalDate fechaDeFinDeCuatrimestre;
 	public LocalDate fechaDeCierreDeInscripcion;
 	public LocalDate fechaDeInicioDeInscripcion;
+
 	
-	
-	
-	
-	
-	
+	public CicloLectivo(Integer id, LocalDate fechaDeInicioDeCuatrimestre, LocalDate fechaDeFinDeCuatrimestre,
+			LocalDate fechaDeCierreDeInscripcion, LocalDate fechaDeInicioDeInscripcion) {
+		this.id = id;
+		this.fechaDeInicioDeCuatrimestre = fechaDeInicioDeCuatrimestre;
+		this.fechaDeFinDeCuatrimestre = fechaDeFinDeCuatrimestre;
+		this.fechaDeCierreDeInscripcion = fechaDeCierreDeInscripcion;
+		this.fechaDeInicioDeInscripcion = fechaDeInicioDeInscripcion;
+	}
+
+
+
+//getter y setter	
 	public LocalDate getFechaDeInicioDeCuatrimestre() {
 		return fechaDeInicioDeCuatrimestre;
 	}
@@ -38,7 +47,15 @@ public class CicloLectivo {
 		return fechaDeInicioDeInscripcion;
 	}
 	public void setFechaDeInicioDeInscripcion(LocalDate fechaDeInicioDeInscripcion) {
+
 		this.fechaDeInicioDeInscripcion = fechaDeInicioDeInscripcion;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
 	
