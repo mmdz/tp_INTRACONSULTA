@@ -7,7 +7,7 @@ public class Materia {
 	private String nombre;
 	private ArrayList<Integer> correlativa = new ArrayList<>();
 	
-	public Materia(String nombre, Integer id) {
+	public Materia(String nombre, Integer id) { 
 		this.nombre = nombre;
 		this.id = id;		
 	}   

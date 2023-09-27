@@ -8,15 +8,15 @@ import org.junit.Test;
 
 public class TestUniversidad {
 
-//	@Test
-//	public void queSePuedaAgregarUnaUniversidad() {
-//		//preparacion
-//		String nombre = "unlam";
-//		Universidad unlam = new Universidad("unlam");
-//		
-//		String esperado = "unlam";
-//		assertEquals(esperado, nombre);
-//	}
+	@Test
+	public void queSePuedaAgregarUnaUniversidad() {
+		
+		String nombre = "unlam";
+		Universidad unlam = new Universidad("unlam");
+		
+		String esperado = "unlam";
+		assertEquals(esperado, nombre);
+	}
 
 
 }

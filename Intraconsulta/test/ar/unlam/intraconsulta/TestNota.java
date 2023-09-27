@@ -11,7 +11,6 @@ public class TestNota {
 	@Test
 	public void QueSePuedaRegistrarUnaNota() {
 		Materia mobil1 = new Materia("Mobil 1", 1);
-		Comision comision = new Comision();
 		String nombre = "unlam";
 		Universidad unlam = new Universidad("unlam");
 		nombre = "Melisa";
@@ -25,18 +24,31 @@ public class TestNota {
 		unlam.registrarAlumno(alumno);
 		
 		unlam.registraMateria(mobil1);
+
+		
+		
+		
+		
+		alumno.setId(1);
+				
+		Integer idComision = 1;
+		Turno turno = Turno.MANIANA;
+		Integer dia = 1; /*lunes*/
+		
+		Comision comision = new Comision(idComision, turno, dia);
+		
+		Boolean estadoDeRegistro = unlam.registrarComision(comision);
+		
 		
 		unlam.registraComision(comision);
 		
-		
-		
 		comision.setId(1);
-		alumno.setId(1);
-		
-		comision.registrarAlumno(alumno);
 		
 		//agregar materia a comision
 		comision.setMateria(mobil1);
+		
+		comision.agregarAlumnoAComision(alumno, comision);
+		
 		
 		assertTrue(comision.registrarNota(alumno.getId(), 5, TipoDeNota.PRIMER_PARCIAL));
 	
@@ -51,7 +63,7 @@ public class TestNota {
 		
 		Materia mobil1 = new Materia("Mobil 1", 1);
 		Materia mobil2 = new Materia("Mobil 2", 2);
-		Comision comision = new Comision();
+		Comision comision = new Comision(1, Turno.MANIANA, 2); //dia martes
 		String nombre = "unlam";
 		Universidad unlam = new Universidad("unlam");
 		nombre = "Melisa";
@@ -76,7 +88,9 @@ public class TestNota {
 		comision.setId(1);
 		alumno.setId(1);
 		
-		comision.registrarAlumno(alumno);
+		//comision.registrarAlumno(alumno);
+		
+		comision.agregarAlumnoAComision(alumno, comision);
 		
 		//agregar materia a comision
 		comision.setMateria(mobil2);
@@ -92,8 +106,8 @@ public class TestNota {
 		
 		Materia mobil1 = new Materia("Mobil 1", 1);
 		Materia mobil2 = new Materia("Mobil 2", 2);
-		Comision comision = new Comision();
-		Comision comision2 = new Comision();
+		Comision comision = new Comision(1, Turno.MANIANA, 2); //dia martes
+		Comision comision2 = new Comision(2, Turno.MANIANA, 2); //dia martes
 		String nombre = "unlam";
 		Universidad unlam = new Universidad("unlam");
 		nombre = "Melisa";
@@ -119,8 +133,8 @@ public class TestNota {
 		comision2.setId(2);
 		alumno.setId(1);
 		
-		comision.registrarAlumno(alumno);
-		comision2.registrarAlumno(alumno);
+		comision.agregarAlumnoAComision(alumno, comision);
+		comision2.agregarAlumnoAComision(alumno, comision);
 		
 		Integer notaValor = 7;
 		

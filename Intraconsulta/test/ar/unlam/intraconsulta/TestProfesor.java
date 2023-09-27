@@ -21,7 +21,7 @@ public class TestProfesor {
 		
 		Boolean estadoDeRegistro = unlam.registrarProfesor(profesor);
 		Boolean esperado = true;
-		
+		 
 		assertEquals(esperado,estadoDeRegistro);
 
 	}

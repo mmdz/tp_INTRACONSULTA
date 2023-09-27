@@ -8,19 +8,164 @@ import java.util.ArrayList;
 
 public class Comision {
 
+	
 	private Integer id;
-	private ArrayList<Alumno> alumnoComision = new ArrayList<>();
-	private ArrayList<Profesor> profesorComision = new ArrayList<>();
 	private Turno turno;
 	private Integer dia; /*dias de la semana 1 al 7*/
-	private Materia materia;
+	private ArrayList<Alumno> alumnosDeComision = new ArrayList<>();
+	private ArrayList<Profesor> profesorComision = new ArrayList<>();	
+	private Materia materia ;
 	private CicloLectivo ciclo; //fecha de inicio
-	private Aula nroAula;
-	//array de notas por comision
+	private ArrayList<Aula> aulas = new ArrayList<>();	
+	//private ArrayList<Nota> notas = new ArrayList<>();
+	private ArrayList<Comision> comisiones = new ArrayList<Comision>();
 	private ArrayList<Examen> examenes = new ArrayList<>();
 	
 	
-	 
+	public Comision(Integer id,Turno turno, Integer dia) {
+		this.id = id;
+		this.turno = turno;
+		this.dia = dia;  /*dias de la semana 1 al 7*/
+	}
+
+//COMISION
+	
+	
+
+	public Boolean agregarMateriaAComision(Comision comision,CicloLectivo ciclo2, Materia materia2, Integer dia) {
+		// TODO Auto-generated method stub
+		Boolean estado = true;
+
+		for (int i = 0; i < this.comisiones.size(); i++) {
+			if (this.comisiones.get(i).getMateria().equals(materia2) &&
+				this.comisiones.get(i).getCiclo().id.equals(ciclo2) &&
+				this.comisiones.get(i).getDia().equals(dia) ) {
+				
+			   estado = false;
+
+			}		
+			 this.setMateria(materia2);
+			 this.setDia(dia);
+			 this.setCiclo(ciclo2);
+			 this.setId(id);
+			 comisiones.add(comision);
+		 	 estado =  true;		
+		} return estado;
+		
+	}
+
+		
+//AULA	
+	public Boolean crearAula(Aula aula) {
+		//que no este duplicada
+		if(buscarAulaPorNumero(aula.getNumeroAula()) == null){
+			return this.aulas.add(aula);
+		}
+		return false;
+	}
+	
+	public Boolean asignarAula(Aula aula, ArrayList<Alumno> alumnos) {
+		/*si existe y hay lugar la asigna*/
+		if(buscarAulaPorNumero(aula.getNumeroAula()).equals(aula) &&
+		   aula.getCapacidadMaxima() >= alumnos.size()) {
+			
+			return this.aulas.add(aula);
+		}
+		return false;
+	}
+
+	
+	public Aula buscarAulaPorNumero(Integer numeroAula) {
+		for (int i = 0; i < aulas.size(); i++) {
+			if (this.aulas.get(i).getNumeroAula().equals(numeroAula))
+				return this.aulas.get(i);
+		}		
+		return null;
+	}
+
+//PROFESOR
+	public Boolean agregarProfesorAComision(Profesor profesor) {
+		// TODO Auto-generated method stub
+		if(buscarProfesorPorDni(profesor.getDni()) == null) {					
+			return this.profesorComision.add(profesor);
+		}
+		 return false;
+	}
+	
+	public Profesor buscarProfesorPorDni(Integer idProfesor) {
+		for (int i = 0; i < profesorComision.size(); i++) {
+			if (this.profesorComision.get(i).getDni().equals(idProfesor))
+				return this.profesorComision.get(i);
+		}		
+		return null;
+	}
+
+	public Boolean agregarProfesorAComision(Comision idComision, Profesor dni, Integer cantidadAlumnos) {
+		// TODO Auto-generated method stub
+		Boolean existe = true;
+		for (int i = 0; i < comisiones.size(); i++) {
+			if (this.comisiones.get(i).getId().equals(idComision.id))
+				existe = true;
+		}	existe = false;
+			
+		if (this.buscarProfesorPorDni(dni.getDni()) != null && existe == true) {			
+			if(cantidadAlumnos >= 1 && cantidadAlumnos <=20) {
+				return this.profesorComision.add(dni);					
+			} if(cantidadAlumnos >= 21 && cantidadAlumnos <=40 && this.profesorComision.size() < 2) 
+				return this.profesorComision.add(dni);		
+
+		} 
+		return false;
+	}
+
+//alumno
+	public Boolean agregarAlumnoAComision(Alumno dni, Comision id2) {
+		// TODO Auto-generated method stub
+		Boolean existeComision = true;
+		Boolean existeAlumno = true;
+
+		for (int i = 0; i < comisiones.size(); i++) {
+			if (this.comisiones.get(i).getId().equals(id2.getId()))
+				existeComision = true;
+		}		existeComision = false;
+		
+		for (int i = 0; i < this.alumnosDeComision.size(); i++) {
+			if (this.alumnosDeComision.get(i).getDni().equals(dni.getDni()))
+				existeAlumno = true;
+			}	existeAlumno = false;
+		
+		if(existeAlumno ==true && existeComision == true) {
+			this.getAlumnosDeComision().add(dni);
+			return true;
+		}
+		
+		return null;
+	}
+	
+//	public Boolean registrarAlumno(Alumno alumno) {
+//		if (buscarAlumnoPorDni(alumno.getDni()) == null)		
+//			return this.alumnos.add(alumno);
+//		return false;
+//	}
+//
+//	public Alumno buscarAlumnoPorDni(Integer dni) {
+//		for (int i = 0; i < alumnos.size(); i++) {
+//			if (this.alumnos.get(i).getDni().equals(dni))
+//				return this.alumnos.get(i);
+//		}		
+//		return null;
+//	} 
+//
+//	public Boolean existeAlumno(Integer dni) {
+//		for (int i = 0; i < alumnos.size(); i++) {
+//			if (this.alumnos.get(i).getDni().equals(dni))
+//				return true;
+//		}
+//		return false;
+//	}
+	
+	
+				 
 //notas
 	public Examen obtenerNota(Integer idAlumno) {
 		
@@ -152,13 +297,6 @@ public class Comision {
 		
 		return returnValue;
 	}
-
-//registros alumno
-	
-	public void registrarAlumno(Alumno alumno) {
-		this.alumnoComision.add(alumno);
-	}
-	
 	
 	
 //Metodos complementarios
@@ -167,7 +305,7 @@ public class Comision {
 		
 		Alumno returnValue = null;
 		
-		for(Alumno alumno : this.alumnoComision) {
+		for(Alumno alumno : this.getAlumnosDeComision()) {
 			if (alumno.getId() == id) {
 				returnValue = alumno;
 				break;
@@ -177,15 +315,16 @@ public class Comision {
 		
 		return returnValue;
 	}
-	
+					
 	
 //getter y setter
 	public ArrayList<Alumno> getAlumnoComision() {
-		return alumnoComision;
+		return alumnosDeComision;
 	}
 
 	public void setAlumnoComision(ArrayList<Alumno> alumnoComision) {
-		this.alumnoComision = alumnoComision;
+
+		this.alumnosDeComision = alumnoComision;
 	}
 
 	public ArrayList<Profesor> getProfesorComision() {
@@ -213,12 +352,15 @@ public class Comision {
 	}
 
 	public CicloLectivo getCuatrimestre() {
+
 		return ciclo;
 	}
 
 	public void setCuatrimestre(CicloLectivo cuatrimestre) {
+
 		this.ciclo = cuatrimestre;
 	}
+
 
 	public ArrayList<Examen> getExamenes() {
 		return this.examenes;
@@ -227,14 +369,18 @@ public class Comision {
 	public void setNotas(ArrayList<Examen> examenes) {
 		this.examenes = examenes;
 	}
+	
+	public ArrayList<Aula> getNroAula() {
 
-	public Aula getNroAula() {
-		return nroAula;
+		return aulas;
 	}
 
-	public void setNroAula(Aula nroAula) {
-		this.nroAula = nroAula;
+	
+	public void setNroAula(ArrayList<Aula> nroAula) {
+
+		this.aulas = nroAula;
 	}
+
 	
 	public void setDia(Integer dia) {
 		this.dia = dia;
@@ -244,15 +390,57 @@ public class Comision {
 		return dia;
 	}
 
+
+
 	public Integer getId() {
-		// TODO Auto-generated method stub
 		return id;
 	}
 
 
 	public void setId(Integer id) {
-		// TODO Auto-generated method stub
+
 		this.id = id;
-		
 	}
+
+	public ArrayList<Alumno> getAlumnosDeComision() {
+		return alumnosDeComision;
+	}
+
+	public void setAlumnosDeComision(ArrayList<Alumno> alumnosDeComision) {
+		this.alumnosDeComision = alumnosDeComision;
+	}
+
+	public CicloLectivo getCiclo() {
+		return ciclo;
+	}
+
+	public void setCiclo(CicloLectivo ciclo) {
+		this.ciclo = ciclo;
+	}
+
+	public ArrayList<Aula> getAulas() {
+		return aulas;
+	}
+
+	public void setAulas(ArrayList<Aula> aulas) {
+		this.aulas = aulas;
+	}
+	
+	public ArrayList<Comision> getComisiones() {
+		return comisiones;
+	}
+	
+	public void setComisiones(ArrayList<Comision> comisiones) {
+		this.comisiones = comisiones;
+	}
+
 }
+
+
+
+
+
+	
+
+
+
