@@ -22,7 +22,7 @@ public class TestAlumno {
 		 
 		//ejecucion
 		Boolean estadoDeRegistro = unlam.registrarAlumno(alumno);
-		Boolean esperado = true;
+		Boolean esperado = true; 
 		
 		//validacion
 		//assertTrue(unlam.registrarAlumno(alumno));

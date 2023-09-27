@@ -8,7 +8,7 @@ public class Profesor {
 	private String nombreProfesor;
 	private LocalDate fechaDeNacimientoProfesor; // PONER FORMATO AAAA MM DD
 	private LocalDate fechaDeIngresoProfesor; // PONER FORMATO AAAA MM DD
-
+ 
 	
 	public Profesor(Integer dniProfesor, String apellidoProfesor, String nombreProfesor,
 			LocalDate fechaDeNacimientoProfesor, LocalDate fechaDeIngresoProfesor) {

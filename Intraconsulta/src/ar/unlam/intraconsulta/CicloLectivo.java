@@ -12,6 +12,9 @@ public class CicloLectivo {
 	public LocalDate fechaDeCierreDeInscripcion;
 	public LocalDate fechaDeInicioDeInscripcion;
 
+	public CicloLectivo() {
+		
+	}	
 	
 	public CicloLectivo(Integer id, LocalDate fechaDeInicioDeCuatrimestre, LocalDate fechaDeFinDeCuatrimestre,
 			LocalDate fechaDeCierreDeInscripcion, LocalDate fechaDeInicioDeInscripcion) {

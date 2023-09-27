@@ -12,7 +12,7 @@ public class TestMateria {
 		Universidad unlam = new Universidad("unlam");
 		Materia mobil = new Materia("mobil 1", 12);
 		
-		assertTrue(unlam.registraMateria(mobil));
+		assertTrue(unlam.registraMateria(mobil)); 
 	}
 	
 	

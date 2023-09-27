@@ -10,7 +10,7 @@ import org.junit.Test;
 pueden superponer los rangos de fechas entre 2 ciclos distintos*/
 
 public class TestCicloLectivo {
-
+ 
 	@Test
 	public void queSePuedaAgregarUnCicloLectivo() {
 		

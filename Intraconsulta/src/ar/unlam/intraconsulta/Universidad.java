@@ -15,7 +15,7 @@ public class Universidad {
 	private ArrayList<Profesor> profesores;
 	private ArrayList<CicloLectivo> cicloLectivo;
 	private ArrayList<Comision> comisiones;
-
+ 
 	//METODO guardar las inscripciones -> alumno en comision
 	
 	public Universidad(String nombre) {
@@ -41,7 +41,7 @@ public class Universidad {
 				return this.alumnos.get(i);
 		}		
 		return null;
-	}
+	} 
 
 	public Boolean existeAlumno(Integer dni) {
 		for (int i = 0; i < alumnos.size(); i++) {
@@ -167,7 +167,7 @@ public class Universidad {
 	}
 
 	
-	private Materia buscarMateriaById(Integer id) {
+	public Materia buscarMateriaById(Integer id) {
 		
 		Materia value = null;
 		
@@ -205,6 +205,24 @@ public class Universidad {
 		return returnValue;
 		
 	}
+	
+	
+//COMISION
+	public Boolean registrarComision(Comision comision) {
+		if (buscarCicloLectivoPorId(comision.getId()) == null)		
+			return this.comisiones.add(comision);
+		return false;
+	}
+	
+	public Comision buscarComisionPorId(Integer id) {
+	for (int i = 0; i < comisiones.size(); i++) {
+		if (this.comisiones.get(i).getId().equals(id))
+			return this.comisiones.get(i);
+		}	
+		return null;
+	}	
+	
+	
 	
 	
 	
@@ -271,6 +289,8 @@ public class Universidad {
 	public void setComisiones(ArrayList<Comision> comisiones) {
 		this.comisiones = comisiones;
 	}
+
+	
 
 	
 
