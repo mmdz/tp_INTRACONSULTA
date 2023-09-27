@@ -7,6 +7,11 @@ public class Materia {
 	private String nombre;
 	private ArrayList<Integer> correlativa = new ArrayList<>();
 	
+	public Materia(String nombre, Integer id) { 
+		this.nombre = nombre;
+		this.id = id;		
+	}   
+	
 	//metodo agregarCorrelativa
 
 	public void agregarCorrelativa(Integer id) {
@@ -15,10 +20,7 @@ public class Materia {
 	
 	
 	
-	
-	
-	
-	
+	//setter y getter
 	public Integer getId() {
 		return id;
 	}
@@ -38,10 +40,6 @@ public class Materia {
 	public void setCorrelativa(ArrayList<Integer> corrrelativa){
 		this.correlativa = corrrelativa;
 	}
-
-	
-	
-	
 	
 	
 }
