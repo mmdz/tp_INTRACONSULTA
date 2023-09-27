@@ -27,6 +27,14 @@ public class Universidad {
 		this.comisiones = new ArrayList<>();
 		
 	}
+	
+	
+	//comision
+	
+	public void registraComision(Comision comision) {
+		// TODO Auto-generated method stub
+		this.comisiones.add(comision);
+	}
 
 	//alumno
 	public Boolean registrarAlumno(Alumno alumno) {
@@ -234,6 +242,11 @@ public class Universidad {
 		return null;
 	}*/
 	
+//notas
+	
+	
+
+	
 //getter y setter	
 	public String getNombre() {
 		return nombre;
@@ -271,6 +284,11 @@ public class Universidad {
 	public void setComisiones(ArrayList<Comision> comisiones) {
 		this.comisiones = comisiones;
 	}
+
+
+
+
+	
 
 	
 
