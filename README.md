@@ -1,7 +1,7 @@
 # tp_INTRACONSULTA
 
-#Alumnos: MENDEZ, MELISA SOLANGE. DNI :34760534
-VALDEZ, CRISTIAN LAUTARO.  DNI: 
+#Alumnos: MENDEZ, MELISA SOLANGE. 
+VALDEZ, CRISTIAN LAUTARO.  
  
  La institución educativa necesita una aplicación que le permita gestionar su oferta académica
 Enunciado
